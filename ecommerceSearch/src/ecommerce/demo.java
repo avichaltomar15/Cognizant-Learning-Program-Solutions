@@ -1,0 +1,67 @@
+package ecommerce;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class demo {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of products: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        Product[] products = new Product[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for product:");
+            System.out.print("Product ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Product Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Product Category: ");
+            String category = sc.nextLine();
+
+            products[i] = new Product(id, name, category);
+        }
+
+        System.out.print("\nEnter product name to search: ");
+        String searchName = sc.nextLine();
+
+        Product result1 = SearchEngine.linearSearch(products, searchName);
+        System.out.println("Linear Search Result: " + (result1 != null ? result1 : "Not Found"));
+
+        Arrays.sort(products); // for binary search
+        Product result2 = SearchEngine.binarySearch(products, searchName);
+        System.out.println("Binary Search Result: " + (result2 != null ? result2 : "Not Found"));
+
+        sc.close();
+    }
+
+//    // --- Linear Search ---
+//    public static Product linearSearch(Product[] products, String targetName) {
+//        for (Product product : products) {
+//            if (product.productName.equalsIgnoreCase(targetName)) {
+//                return product;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    // --- Binary Search ---
+//    public static Product binarySearch(Product[] products, String targetName) {
+//        int low = 0, high = products.length - 1;
+//        while (low <= high) {
+//            int mid = (low + high) / 2;
+//            int cmp = products[mid].productName.compareToIgnoreCase(targetName);
+//            if (cmp == 0) return products[mid];
+//            else if (cmp < 0) low = mid + 1;
+//            else high = mid - 1;
+//        }
+//        return null;
+//    }
+}

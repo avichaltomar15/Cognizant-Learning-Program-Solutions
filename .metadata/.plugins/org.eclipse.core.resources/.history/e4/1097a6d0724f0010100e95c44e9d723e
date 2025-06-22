@@ -1,0 +1,32 @@
+package forecast;
+
+public class Forecast {
+
+    // Recursive function
+    public static double forecastValue(double currentValue, double growthRate, int years) {
+        if (years == 0) {
+            return currentValue;
+        }
+        return forecastValue(currentValue, growthRate, years - 1) * (1 + growthRate);
+    }
+
+    // Iterative version
+    public static double forecastIterative(double currentValue, double growthRate, int years) {
+        for (int i = 0; i < years; i++) {
+            currentValue *= (1 + growthRate);
+        }
+        return currentValue;
+    }
+
+    public static void main(String[] args) {
+        double currentValue = 1000.0;
+        double growthRate = 0.05;
+        int years = 10;
+
+        double futureRecursive = forecastValue(currentValue, growthRate, years);
+        double futureIterative = forecastIterative(currentValue, growthRate, years);
+
+        System.out.printf("Recursive Forecast after %d years: ₹%.2f\n", years, futureRecursive);
+        System.out.printf("Iterative Forecast after %d years: ₹%.2f\n", years, futureIterative);
+    }
+}
