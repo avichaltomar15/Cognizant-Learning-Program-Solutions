@@ -41,14 +41,14 @@ This folder contains two independent **Spring Boot REST microservices** develope
   "type": "savings",
   "balance": 234343
 }
-
+```
 
 ### 2. Loan Microservice
 Sample URL:
 http://localhost:8081/loans/H00987987972342
 
 Sample Output:
-
+```
 {
   "number": "H00987987972342",
   "type": "car",
@@ -56,4 +56,4 @@ Sample Output:
   "emi": 3258,
   "tenure": 18
 }
-
+```
